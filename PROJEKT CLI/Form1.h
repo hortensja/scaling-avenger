@@ -1,5 +1,8 @@
 #pragma once
 
+#include "stdafx.h"
+#include "wyniki.h"
+
 namespace WindowsFormApplication1 {
 
 	using namespace System;
@@ -90,6 +93,7 @@ namespace WindowsFormApplication1 {
 		{
 			this->typBox = (gcnew System::Windows::Forms::GroupBox());
 			this->nocnaButton = (gcnew System::Windows::Forms::RadioButton());
+			this->caloButton = (gcnew System::Windows::Forms::RadioButton());
 			this->dziennaButton = (gcnew System::Windows::Forms::RadioButton());
 			this->dataBox = (gcnew System::Windows::Forms::GroupBox());
 			this->dataLabel2 = (gcnew System::Windows::Forms::Label());
@@ -110,10 +114,9 @@ namespace WindowsFormApplication1 {
 			this->szukaj = (gcnew System::Windows::Forms::Button());
 			this->poziomBox = (gcnew System::Windows::Forms::GroupBox());
 			this->poziomList = (gcnew System::Windows::Forms::ComboBox());
-			this->caloButton = (gcnew System::Windows::Forms::RadioButton());
 			this->kolejnoscBox = (gcnew System::Windows::Forms::GroupBox());
-			this->obowiazkowaButton = (gcnew System::Windows::Forms::RadioButton());
 			this->dowolnaButton = (gcnew System::Windows::Forms::RadioButton());
+			this->obowiazkowaButton = (gcnew System::Windows::Forms::RadioButton());
 			this->typBox->SuspendLayout();
 			this->dataBox->SuspendLayout();
 			this->srodekBox->SuspendLayout();
@@ -145,6 +148,18 @@ namespace WindowsFormApplication1 {
 			this->nocnaButton->TabStop = true;
 			this->nocnaButton->Text = L"Nocna";
 			this->nocnaButton->UseVisualStyleBackColor = true;
+			// 
+			// caloButton
+			// 
+			this->caloButton->AutoSize = true;
+			this->caloButton->Location = System::Drawing::Point(189, 17);
+			this->caloButton->Margin = System::Windows::Forms::Padding(1, 3, 1, 3);
+			this->caloButton->Name = L"caloButton";
+			this->caloButton->Size = System::Drawing::Size(108, 21);
+			this->caloButton->TabIndex = 2;
+			this->caloButton->TabStop = true;
+			this->caloButton->Text = L"Ca³odobowa";
+			this->caloButton->UseVisualStyleBackColor = true;
 			// 
 			// dziennaButton
 			// 
@@ -357,6 +372,7 @@ namespace WindowsFormApplication1 {
 			this->szukaj->TabIndex = 5;
 			this->szukaj->Text = L"Szukaj";
 			this->szukaj->UseVisualStyleBackColor = true;
+			this->szukaj->Click += gcnew System::EventHandler(this, &Form1::szukaj_Click);
 			// 
 			// poziomBox
 			// 
@@ -379,18 +395,6 @@ namespace WindowsFormApplication1 {
 			this->poziomList->TabIndex = 0;
 			this->poziomList->Text = L"wybierz poziom";
 			// 
-			// caloButton
-			// 
-			this->caloButton->AutoSize = true;
-			this->caloButton->Location = System::Drawing::Point(189, 17);
-			this->caloButton->Margin = System::Windows::Forms::Padding(1, 3, 1, 3);
-			this->caloButton->Name = L"caloButton";
-			this->caloButton->Size = System::Drawing::Size(108, 21);
-			this->caloButton->TabIndex = 2;
-			this->caloButton->TabStop = true;
-			this->caloButton->Text = L"Ca³odobowa";
-			this->caloButton->UseVisualStyleBackColor = true;
-			// 
 			// kolejnoscBox
 			// 
 			this->kolejnoscBox->Controls->Add(this->dowolnaButton);
@@ -402,17 +406,6 @@ namespace WindowsFormApplication1 {
 			this->kolejnoscBox->TabStop = false;
 			this->kolejnoscBox->Text = L"Kolejnoœæ potwierdzania PK";
 			// 
-			// obowiazkowaButton
-			// 
-			this->obowiazkowaButton->AutoSize = true;
-			this->obowiazkowaButton->Location = System::Drawing::Point(22, 25);
-			this->obowiazkowaButton->Name = L"obowiazkowaButton";
-			this->obowiazkowaButton->Size = System::Drawing::Size(118, 21);
-			this->obowiazkowaButton->TabIndex = 0;
-			this->obowiazkowaButton->TabStop = true;
-			this->obowiazkowaButton->Text = L"obowi¹zkowa";
-			this->obowiazkowaButton->UseVisualStyleBackColor = true;
-			// 
 			// dowolnaButton
 			// 
 			this->dowolnaButton->AutoSize = true;
@@ -423,6 +416,17 @@ namespace WindowsFormApplication1 {
 			this->dowolnaButton->TabStop = true;
 			this->dowolnaButton->Text = L"dowolna";
 			this->dowolnaButton->UseVisualStyleBackColor = true;
+			// 
+			// obowiazkowaButton
+			// 
+			this->obowiazkowaButton->AutoSize = true;
+			this->obowiazkowaButton->Location = System::Drawing::Point(22, 25);
+			this->obowiazkowaButton->Name = L"obowiazkowaButton";
+			this->obowiazkowaButton->Size = System::Drawing::Size(118, 21);
+			this->obowiazkowaButton->TabIndex = 0;
+			this->obowiazkowaButton->TabStop = true;
+			this->obowiazkowaButton->Text = L"obowi¹zkowa";
+			this->obowiazkowaButton->UseVisualStyleBackColor = true;
 			// 
 			// Form1
 			// 
@@ -454,6 +458,10 @@ namespace WindowsFormApplication1 {
 			this->kolejnoscBox->PerformLayout();
 			this->ResumeLayout(false);
 
+
+
+			///TU BEDZIE WCZYTYWANIE DANHYCH Z PLIKU
+
 		}
 #pragma endregion
 
@@ -464,6 +472,14 @@ private: System::Void dystansScroll1_Scroll(System::Object^  sender, System::Win
 private: System::Void dystansScroll2_Scroll(System::Object^  sender, System::Windows::Forms::ScrollEventArgs^  e) {
 
 	dystansLabel2->Text = (dystansScroll2->Value).ToString() + " km";
+}
+private: System::Void szukaj_Click(System::Object^  sender, System::EventArgs^  e) {
+	
+	//wyniki^ okno2 = gcnew wyniki(this);
+
+	Form^ okno2 = gcnew Form;
+
+	okno2->Show();
 }
 };
 }
