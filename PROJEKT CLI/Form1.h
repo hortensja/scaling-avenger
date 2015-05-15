@@ -2,6 +2,8 @@
 
 #include "stdafx.h"
 #include "wyniki.h"
+#include "zapytanie.h"
+#include "wczytaj.h"
 
 namespace WindowsFormApplication1 {
 
@@ -17,13 +19,22 @@ namespace WindowsFormApplication1 {
 	/// </summary>
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
+
+
 	public:
 		Form1(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+
+			//vector<BazaInO>baza;
+
+			////////////////////////////
+			//WCZYTYWANIE DANYCH Z PLIKU
+
+			//wczytaj(baza);
+
+			////////////////////////////
+
 		}
 
 	protected:
@@ -152,7 +163,7 @@ namespace WindowsFormApplication1 {
 			// caloButton
 			// 
 			this->caloButton->AutoSize = true;
-			this->caloButton->Location = System::Drawing::Point(189, 17);
+			this->caloButton->Location = System::Drawing::Point(171, 17);
 			this->caloButton->Margin = System::Windows::Forms::Padding(1, 3, 1, 3);
 			this->caloButton->Name = L"caloButton";
 			this->caloButton->Size = System::Drawing::Size(108, 21);
@@ -164,7 +175,7 @@ namespace WindowsFormApplication1 {
 			// dziennaButton
 			// 
 			this->dziennaButton->AutoSize = true;
-			this->dziennaButton->Location = System::Drawing::Point(84, 18);
+			this->dziennaButton->Location = System::Drawing::Point(84, 17);
 			this->dziennaButton->Margin = System::Windows::Forms::Padding(1, 3, 1, 3);
 			this->dziennaButton->Name = L"dziennaButton";
 			this->dziennaButton->Size = System::Drawing::Size(80, 21);
@@ -220,6 +231,7 @@ namespace WindowsFormApplication1 {
 			// 
 			// dateTimePicker1
 			// 
+			this->dateTimePicker1->CalendarForeColor = System::Drawing::SystemColors::Window;
 			this->dateTimePicker1->Location = System::Drawing::Point(100, 24);
 			this->dateTimePicker1->Margin = System::Windows::Forms::Padding(1, 3, 1, 3);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
@@ -460,7 +472,6 @@ namespace WindowsFormApplication1 {
 
 
 
-			///TU BEDZIE WCZYTYWANIE DANHYCH Z PLIKU
 
 		}
 #pragma endregion
@@ -475,12 +486,105 @@ private: System::Void dystansScroll2_Scroll(System::Object^  sender, System::Win
 }
 private: System::Void szukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 	
-	//wyniki^ okno2 = gcnew wyniki(this);
+	vector<BazaInO>baza;
+	wczytaj(baza);
 
-	Form^ okno2 = gcnew Form;
+
+
+
+	char t, s, p, k; //typ, srodek, poziom, kolejnosc
+	int dmin, dmax; //dystans
+	//string d; 
+	DateTime d1, d2;//data?
+
+	//TYP
+	if (dziennaButton->Checked)
+		t = 'D';
+	else if (nocnaButton->Checked)
+		t = 'N';
+	else if (caloButton->Checked)
+		t = 'C';
+	else
+		t = 'U';//undefined
+
+	//SRODEK LOKOMOCJI
+	if (pieszaButton->Checked)
+		t = 'P';
+	else if (rowerowaButton->Checked)
+		t = 'R';
+	else if (mieszanaButton->Checked)
+		t = 'M';
+	else
+		t = 'U';//undefined
+
+	//POZIOM
+	if (poziomList->SelectedIndex == 0)
+		p = 'P';
+	else if (poziomList->SelectedIndex == 1)
+		p = 'S';
+	else if (poziomList->SelectedIndex == 2)
+		p = 'Z';
+	else if (poziomList->SelectedIndex == 3)
+		p = 'E';
+	else
+		p = 'U';//undefined
+
+	//KOLEJNOSC
+	if (obowiazkowaButton->Checked)
+		k = 'O';
+	else if (dowolnaButton->Checked)
+		k = 'D';
+	else
+		k = 'U';//undefined
+
+	//DYSTANS
+	dmin = dystansScroll1->Value;
+	dmax = dystansScroll2->Value;
+	if (dmin > dmax){
+		int d = dmin;
+		dmin = dmax;
+		dmax = d;
+	}
+
+	//DATA
+	d1 = dateTimePicker1->Value;
+	d2 = dateTimePicker2->Value;
+
+	Zapytanie q(t, s, dmin, dmax, p, k);
+
+
+
+	Form^ okno2 = gcnew PROJEKT_CLI::wyniki();
+	TextBox^ wyn = gcnew TextBox;
+	wyn->Text = baza.size().ToString();
+	okno2->Controls->Add(wyn);
+
+	for (size_t i = 0; i < baza.size(); i++)
+	{
+		if (!porownaj(baza[i], q)){
+			//wyn->Text += "cos ";
+			TextBox^ wyn = gcnew TextBox;
+			wyn->Text = "cps ";
+			okno2->Controls->Add(wyn);
+		}
+		TextBox^ wyn = gcnew TextBox;
+		wyn->Text = "cps ";
+		okno2->Controls->Add(wyn);
+	}
+	
+
+
+
+
+
+
+
+	//Form^ okno2 = gcnew Form1();
+
+
+	//Form^ okno2 = gcnew Form;
 
 	okno2->Show();
 }
 };
 }
-

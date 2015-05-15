@@ -1,5 +1,6 @@
 #pragma once
 
+
 namespace PROJEKT_CLI {
 
 	using namespace System;
@@ -15,12 +16,10 @@ namespace PROJEKT_CLI {
 	public ref class wyniki : public System::Windows::Forms::Form
 	{
 
-	private: System::Windows::Forms::Form ^drugieokno;
 
 	public:
-		wyniki(System::Windows::Forms::Form ^d)
+		wyniki(void)
 		{
-			drugieokno = d;
 			InitializeComponent();
 		}
 
@@ -36,18 +35,24 @@ namespace PROJEKT_CLI {
 			}
 		}
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+	private: System::Windows::Forms::DataGridViewLinkColumn^  Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
+	public: System::Windows::Forms::RichTextBox^  richTextBox1;
+
+
+
+	private: System::ComponentModel::IContainer^  components;
 	protected:
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -57,11 +62,13 @@ namespace PROJEKT_CLI {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewLinkColumn());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -69,14 +76,14 @@ namespace PROJEKT_CLI {
 			// 
 			this->dataGridView1->AllowUserToOrderColumns = true;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5
+					this->Column6, this->Column2, this->Column3, this->Column4, this->Column5
 			});
 			this->dataGridView1->Location = System::Drawing::Point(32, 34);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(699, 443);
+			this->dataGridView1->Size = System::Drawing::Size(702, 89);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// Column1
@@ -84,6 +91,13 @@ namespace PROJEKT_CLI {
 			this->Column1->HeaderText = L"URL";
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
+			this->Column1->Resizable = System::Windows::Forms::DataGridViewTriState::True;
+			this->Column1->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::Automatic;
+			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"Column6";
+			this->Column6->Name = L"Column6";
 			// 
 			// Column2
 			// 
@@ -109,15 +123,24 @@ namespace PROJEKT_CLI {
 			this->Column5->Name = L"Column5";
 			this->Column5->ReadOnly = true;
 			// 
+			// richTextBox1
+			// 
+			this->richTextBox1->Location = System::Drawing::Point(445, 250);
+			this->richTextBox1->Name = L"richTextBox1";
+			this->richTextBox1->Size = System::Drawing::Size(216, 96);
+			this->richTextBox1->TabIndex = 1;
+			this->richTextBox1->Text = L"";
+			// 
 			// wyniki
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->ClientSize = System::Drawing::Size(783, 534);
+			this->BackColor = System::Drawing::Color::OliveDrab;
+			this->ClientSize = System::Drawing::Size(1081, 534);
+			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->dataGridView1);
 			this->Name = L"wyniki";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"wyniki wyszukiwania";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
@@ -126,12 +149,10 @@ namespace PROJEKT_CLI {
 #pragma endregion
 
 	private:System::Void wyniki_Load(System::Object^ sender, System::EventArgs^ e){
+		/*Form^ okno = gcnew Form1();
+		okno->Show();*/
 
 	}
-
-
-
-
 
 
 	};

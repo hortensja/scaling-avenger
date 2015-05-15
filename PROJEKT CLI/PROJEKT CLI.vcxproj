@@ -103,9 +103,11 @@
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="wczytaj.h" />
     <ClInclude Include="wyniki.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="zapytanie.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
