@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+
 
 #include "zapytanie.h"
 
@@ -34,6 +36,24 @@ public:
 		Kolejnosc = k;
 		Strona = u;
 	}
+	void wypisz(ofstream plik){
+		plik << "nazwa: " << Nazwa << endl;
+		plik << "Miejsce: " << Miejsce << endl;
+		plik << "Data: " << Data << endl;
+	}
+
+	string getNazwa(){ return Nazwa; }
+	string getMiejsce(){ return Miejsce; }
+	string getTrasa(){ return Trasa; }
+	char getPoziom(){ return Poziom; }
+	char getKolejnosc(){ return Kolejnosc; }
+	char getSrodek(){ return Srodek; }
+	char getTyp(){ return Typ; }
+	int getDystans(){ return Dystans; }
+	int getCzas(){ return Czas; }
+	string getStrona(){ return Strona; }
+	string getData(){ return Data; }
+
 
 	friend bool porownaj(const BazaInO &b, const Zapytanie &q);
 

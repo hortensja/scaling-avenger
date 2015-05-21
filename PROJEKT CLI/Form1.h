@@ -486,8 +486,8 @@ private: System::Void dystansScroll2_Scroll(System::Object^  sender, System::Win
 }
 private: System::Void szukaj_Click(System::Object^  sender, System::EventArgs^  e) {
 	
-	vector<BazaInO>baza;
-	wczytaj(baza);
+	vector<BazaInO> baza;
+	baza = wczytaj(baza);
 
 
 
@@ -564,11 +564,11 @@ private: System::Void szukaj_Click(System::Object^  sender, System::EventArgs^  
 		if (!porownaj(baza[i], q)){
 			//wyn->Text += "cos ";
 			TextBox^ wyn = gcnew TextBox;
-			wyn->Text = "cps ";
+			wyn->Text = "aaa ";
 			okno2->Controls->Add(wyn);
 		}
 		TextBox^ wyn = gcnew TextBox;
-		wyn->Text = "cps ";
+		wyn->Text = "bbb ";
 		okno2->Controls->Add(wyn);
 	}
 	
