@@ -29,25 +29,25 @@ vector<BazaInO> wczytaj(vector<BazaInO> baza){
 	ofstream what("what.txt");
 
 	//POPRAW TO
-	while (n<50)//!dane.eof())
+	while (!dane.eof())
 	{
 
 		dane >> nazwa;
 		dane >> miejsce;
-		dane >> trasa;
-		dane >> poziom;
-		dane >> kolejnosc;
-		dane >> srodek;
 		dane >> typ;
+		dane >> trasa;
+		dane >> srodek;
 		dane >> dystans;
 		dane >> czas;
-		dane >> strona;
 		dane>> data;
+		dane >> poziom;
+		dane >> kolejnosc;
+		dane >> strona;
 		BazaInO b = BazaInO(nazwa, miejsce, typ, trasa, srodek, dystans, czas, data, poziom, kolejnosc, strona);
 		baza.push_back(b);
-		what << baza.size() << baza.back().getNazwa() << '\t' << baza.back().getMiejsce() << "\ttyp: " << baza.back().getTyp() << "\tTrasa: " << baza.back().getTrasa() << "\tsrodek: " << baza.back().getSrodek() << "\tdyst: " << baza.back().getDystans() << "\tczas:" << baza.back().getCzas() << "\tdata:" << baza.back().getData() << "\tpoziom:" << baza.back().getPoziom() <<"\tkolej: "<< baza.back().getKolejnosc() << "\tstrona: " << baza.back().getStrona()<<endl;
+		what <</* baza.size() <<*/ baza.back().getNazwa() << '\t' << baza.back().getMiejsce() << "\ttyp: " << baza.back().getTyp() << "\tTrasa: " << baza.back().getTrasa() << "\tsrodek: " << baza.back().getSrodek() << "\tdyst: " << baza.back().getDystans() << "\tczas:" << baza.back().getCzas() << "\tdata:" << baza.back().getData() << "\tpoziom:" << baza.back().getPoziom() <<"\tkolej: "<< baza.back().getKolejnosc() << "\tstrona: " << baza.back().getStrona()<<endl;
 		//baza.back().wypisz(what);
-		++n;
+		//++n;
 	}
 	return baza;
 }

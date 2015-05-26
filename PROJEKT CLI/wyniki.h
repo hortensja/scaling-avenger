@@ -83,7 +83,7 @@ namespace PROJEKT_CLI {
 			this->dataGridView1->Location = System::Drawing::Point(32, 34);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(702, 89);
+			this->dataGridView1->Size = System::Drawing::Size(997, 76);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// Column1
