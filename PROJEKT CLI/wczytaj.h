@@ -49,22 +49,37 @@ vector<BazaInO> wczytaj(vector<BazaInO> baza){
 		//baza.back().wypisz(what);
 		//++n;
 	}
+	dane.close();
+	what.close();
 	return baza;
 }
 
 
 bool porownaj(const BazaInO &b, const Zapytanie &q){
 
-	if (q.Typ != 'U' && q.Typ != b.Typ)
-		return false;
-	if (q.Srodek != 'U' && q.Srodek != b.Srodek)
-		return false;
-	if (q.Kolejnosc != 'U' && q.Kolejnosc != b.Kolejnosc)
-		return false;
-	if (q.Poziom != 'U' && q.Poziom != b.Poziom)
-		return false;
-	if (b.Dystans<q.DystansMin || b.Dystans>q.DystansMax)
-		return false;
+	ofstream porownanie("por.txt");
 
+
+	if (q.Typ != 'U' && q.Typ != b.Typ){
+		porownanie << "typ: " << q.Typ << " != " << b.Typ << endl;
+		return false;
+	}
+	if (q.Srodek != 'U' && q.Srodek != b.Srodek){
+		porownanie << "srodek: " << q.Srodek << " != " << b.Srodek << endl;
+		return false;
+	}
+	if (q.Kolejnosc != 'U' && q.Kolejnosc != b.Kolejnosc){
+		porownanie << "kolejnosc: " << q.Kolejnosc << " != " << b.Kolejnosc << endl;
+		return false;
+	}
+	if (q.Poziom != 'U' && q.Poziom != b.Poziom){
+		porownanie << "poziom: " << q.Poziom << " != " << b.Poziom << endl;
+		return false;
+	}
+	if (b.Dystans<q.DystansMin || b.Dystans>q.DystansMax){
+		porownanie << "dystans: " << q.DystansMin << " - "<<q.DystansMax<<" != " << b.Dystans << endl;
+		return false;
+	}
+	porownanie.close();
 	return true;
 }

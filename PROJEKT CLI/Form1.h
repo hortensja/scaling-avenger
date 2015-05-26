@@ -13,6 +13,7 @@ namespace WindowsFormApplication1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Summary for Form1
@@ -20,7 +21,7 @@ namespace WindowsFormApplication1 {
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
 
-
+	//private:List<BazaInO>^ baza;
 	public:
 		Form1(void)
 		{
@@ -509,13 +510,13 @@ private: System::Void szukaj_Click(System::Object^  sender, System::EventArgs^  
 
 	//SRODEK LOKOMOCJI
 	if (pieszaButton->Checked)
-		t = 'P';
+		s = 'P';
 	else if (rowerowaButton->Checked)
-		t = 'R';
+		s = 'R';
 	else if (mieszanaButton->Checked)
-		t = 'M';
+		s = 'M';
 	else
-		t = 'U';//undefined
+		s = 'U';//undefined
 
 	//POZIOM
 	if (poziomList->SelectedIndex == 0)
@@ -554,36 +555,100 @@ private: System::Void szukaj_Click(System::Object^  sender, System::EventArgs^  
 
 
 
-	Form^ okno2 = gcnew PROJEKT_CLI::wyniki();
-	TextBox^ wyn = gcnew TextBox;
+	Form^ okno2 = gcnew Form();
+	okno2->BackColor = System::Drawing::Color::OliveDrab;
+	okno2->ClientSize = System::Drawing::Size(1020, 500);
+
+
+	/*TextBox^ wyn = gcnew TextBox;
 	wyn->Text = baza.size().ToString();
-	okno2->Controls->Add(wyn);
+	okno2->Controls->Add(wyn);*/
+
+	DataGridView^ grid = gcnew DataGridView();
+	DataGridViewLinkColumn^  Column1 = gcnew DataGridViewLinkColumn();
+	DataGridViewTextBoxColumn^  Column2 = gcnew DataGridViewTextBoxColumn();
+	DataGridViewTextBoxColumn^  Column3 = gcnew DataGridViewTextBoxColumn();
+	DataGridViewTextBoxColumn^  Column4 = gcnew DataGridViewTextBoxColumn();
+	DataGridViewTextBoxColumn^  Column5 = gcnew DataGridViewTextBoxColumn();
+	DataGridViewTextBoxColumn^  Column6 = gcnew DataGridViewTextBoxColumn();
+
+	grid->Size = System::Drawing::Size(1000, 376);
+	grid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+		Column1, Column2, Column3, Column4, Column5, Column6	});
+	grid->RowCount = 5;
+	grid->Location = System::Drawing::Point(10, 34);
+
+
+	// 
+	Column1->HeaderText = L"URL";
+	Column1->Name = L"Column1";
+	Column1->ReadOnly = true;
+	Column1->Resizable = System::Windows::Forms::DataGridViewTriState::True;
+	Column1->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::Automatic;
+	// 
+	// Column2
+	// 
+	Column2->HeaderText = L"Nazwa";
+	Column2->Name = L"Column2";
+	Column2->ReadOnly = true;
+	// 
+	// Column3
+	// 
+	Column3->HeaderText = L"Miejsce";
+	Column3->Name = L"Column3";
+	Column3->ReadOnly = true;
+	// 
+	// Column4
+	// 
+	Column4->HeaderText = L"Trasa";
+	Column4->Name = L"Column4";
+	Column4->ReadOnly = true;
+	// 
+	// Column5
+	// 
+	Column5->HeaderText = L"Dystans";
+	Column5->Name = L"Column5";
+	Column5->ReadOnly = true;
+	// 
+	// Column6
+	// 
+	Column6->HeaderText = L"Column6";
+	Column6->Name = L"Column6";
+
+
+
+
+	ofstream cosiedzieje("cosie.txt");
+
+	cosiedzieje << "ZAPYTANIE typ:  " << q.getTyp() << " srodek: " << q.getSrodek() << " dyst: " << q.getDystansMin() << " - " << q.getDystansMax() << " poziom: " << q.getPoziom() << " kolejnosc: " << q.getKolejnosc() << endl;
+
+	int n = 0;
 
 	for (size_t i = 0; i < baza.size(); i++)
 	{
-		if (!porownaj(baza[i], q)){
+		
+		cosiedzieje << i << "\t" << porownaj(baza[i], q) << endl;
+
+		if (porownaj(baza[i], q)){
+			//System::String^ temp = baza[i].getNazwa();
+
+			grid->Rows[n]->Cells[4]->Value = baza[i].getDystans();
+			//grid->Rows[n]->Cells[1]->Value = baza[i].getNazwa();
+			
+			//grid->Rows[n]->Cells[1]->
+			
 			//wyn->Text += "cos ";
-			TextBox^ wyn = gcnew TextBox;
+			/*TextBox^ wyn = gcnew TextBox;
 			wyn->Text = "aaa ";
-			okno2->Controls->Add(wyn);
+			okno2->Controls->Add(wyn);*/
+			
+			++n;
 		}
-		TextBox^ wyn = gcnew TextBox;
-		wyn->Text = "bbb ";
-		okno2->Controls->Add(wyn);
 	}
-	
+	cosiedzieje.close();
 
 
-
-
-
-
-
-	//Form^ okno2 = gcnew Form1();
-
-
-	//Form^ okno2 = gcnew Form;
-
+	okno2->Controls->Add(grid);
 	okno2->Show();
 }
 };

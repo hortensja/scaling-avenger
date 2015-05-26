@@ -36,12 +36,12 @@ namespace PROJEKT_CLI {
 		}
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
 	private: System::Windows::Forms::DataGridViewLinkColumn^  Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
-	public: System::Windows::Forms::RichTextBox^  richTextBox1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
+
 
 
 
@@ -68,7 +68,6 @@ namespace PROJEKT_CLI {
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -123,21 +122,12 @@ namespace PROJEKT_CLI {
 			this->Column5->Name = L"Column5";
 			this->Column5->ReadOnly = true;
 			// 
-			// richTextBox1
-			// 
-			this->richTextBox1->Location = System::Drawing::Point(445, 250);
-			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(216, 96);
-			this->richTextBox1->TabIndex = 1;
-			this->richTextBox1->Text = L"";
-			// 
 			// wyniki
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::OliveDrab;
 			this->ClientSize = System::Drawing::Size(1081, 534);
-			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->dataGridView1);
 			this->Name = L"wyniki";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
