@@ -5,6 +5,9 @@
 #include "zapytanie.h"
 #include "wczytaj.h"
 
+#include<iostream>
+#include<string>
+
 namespace WindowsFormApplication1 {
 
 	using namespace System;
@@ -21,21 +24,10 @@ namespace WindowsFormApplication1 {
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
 
-	//private:List<BazaInO>^ baza;
 	public:
 		Form1(void)
 		{
 			InitializeComponent();
-
-			//vector<BazaInO>baza;
-
-			////////////////////////////
-			//WCZYTYWANIE DANYCH Z PLIKU
-
-			//wczytaj(baza);
-
-			////////////////////////////
-
 		}
 
 	protected:
@@ -55,10 +47,6 @@ namespace WindowsFormApplication1 {
 	private: System::Windows::Forms::RadioButton^  dziennaButton;
 	private: System::Windows::Forms::GroupBox^  dataBox;
 	private: System::Windows::Forms::HScrollBar^  dystansScroll1;
-
-
-
-
 
 
 
@@ -560,10 +548,6 @@ private: System::Void szukaj_Click(System::Object^  sender, System::EventArgs^  
 	okno2->ClientSize = System::Drawing::Size(1020, 500);
 
 
-	/*TextBox^ wyn = gcnew TextBox;
-	wyn->Text = baza.size().ToString();
-	okno2->Controls->Add(wyn);*/
-
 	DataGridView^ grid = gcnew DataGridView();
 	DataGridViewLinkColumn^  Column1 = gcnew DataGridViewLinkColumn();
 	DataGridViewTextBoxColumn^  Column2 = gcnew DataGridViewTextBoxColumn();
@@ -571,11 +555,12 @@ private: System::Void szukaj_Click(System::Object^  sender, System::EventArgs^  
 	DataGridViewTextBoxColumn^  Column4 = gcnew DataGridViewTextBoxColumn();
 	DataGridViewTextBoxColumn^  Column5 = gcnew DataGridViewTextBoxColumn();
 	DataGridViewTextBoxColumn^  Column6 = gcnew DataGridViewTextBoxColumn();
+	DataGridViewTextBoxColumn^  Column7 = gcnew DataGridViewTextBoxColumn();
 
 	grid->Size = System::Drawing::Size(1000, 376);
-	grid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
-		Column1, Column2, Column3, Column4, Column5, Column6	});
-	grid->RowCount = 5;
+	grid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
+		Column1, Column2, Column3, Column4, Column5, Column6, Column7	});
+	grid->RowCount = 15;
 	grid->Location = System::Drawing::Point(10, 34);
 
 
@@ -583,13 +568,15 @@ private: System::Void szukaj_Click(System::Object^  sender, System::EventArgs^  
 	Column1->HeaderText = L"URL";
 	Column1->Name = L"Column1";
 	Column1->ReadOnly = true;
-	Column1->Resizable = System::Windows::Forms::DataGridViewTriState::True;
+	Column1->Width = 180;
+	//Column1->Resizable = System::Windows::Forms::DataGridViewTriState::True;
 	Column1->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::Automatic;
 	// 
 	// Column2
 	// 
 	Column2->HeaderText = L"Nazwa";
 	Column2->Name = L"Column2";
+	Column2->Width = 120;
 	Column2->ReadOnly = true;
 	// 
 	// Column3
@@ -606,47 +593,69 @@ private: System::Void szukaj_Click(System::Object^  sender, System::EventArgs^  
 	// 
 	// Column5
 	// 
-	Column5->HeaderText = L"Dystans";
+	Column5->HeaderText = L"Dystans [km]";
 	Column5->Name = L"Column5";
 	Column5->ReadOnly = true;
 	// 
 	// Column6
 	// 
-	Column6->HeaderText = L"Column6";
+	Column6->HeaderText = L"Limit czasu [h]";
 	Column6->Name = L"Column6";
+	Column6->ReadOnly = true;
 
+	// Column7
+	// 
+	Column7->HeaderText = L"Data";
+	Column7->Name = L"Column6";
+	Column7->ReadOnly = true;
 
-
-
-	ofstream cosiedzieje("cosie.txt");
-
-	cosiedzieje << "ZAPYTANIE typ:  " << q.getTyp() << " srodek: " << q.getSrodek() << " dyst: " << q.getDystansMin() << " - " << q.getDystansMax() << " poziom: " << q.getPoziom() << " kolejnosc: " << q.getKolejnosc() << endl;
 
 	int n = 0;
+	
+	int wcz = 0, poz = 0;
 
 	for (size_t i = 0; i < baza.size(); i++)
 	{
 		
-		cosiedzieje << i << "\t" << porownaj(baza[i], q) << endl;
-
 		if (porownaj(baza[i], q)){
-			//System::String^ temp = baza[i].getNazwa();
 
-			grid->Rows[n]->Cells[4]->Value = baza[i].getDystans();
-			//grid->Rows[n]->Cells[1]->Value = baza[i].getNazwa();
-			
-			//grid->Rows[n]->Cells[1]->
-			
-			//wyn->Text += "cos ";
-			/*TextBox^ wyn = gcnew TextBox;
-			wyn->Text = "aaa ";
-			okno2->Controls->Add(wyn);*/
-			
-			++n;
+
+			DateTime dt;// = DateTime;
+			String^ dts = gcnew String(baza[i].getData().c_str());
+			dt = DateTime::Parse(dts);
+
+			wcz=DateTime::Compare(dt, d1);
+			poz = DateTime::Compare(d2, dt);
+
+			if (wcz >= 0 && poz >= 0){
+
+				String^ temp = gcnew String(baza[i].getStrona().c_str());
+				grid->Rows[n]->Cells[0]->Value = temp;
+
+				String^ temp1 = gcnew String(baza[i].getNazwa().c_str());
+				grid->Rows[n]->Cells[1]->Value = temp1;
+
+				String^ temp2 = gcnew String(baza[i].getMiejsce().c_str());
+				grid->Rows[n]->Cells[2]->Value = temp2;
+
+				String^ temp3 = gcnew String(baza[i].getTrasa().c_str());
+				grid->Rows[n]->Cells[3]->Value = temp3;
+
+				grid->Rows[n]->Cells[4]->Value = baza[i].getDystans();
+				grid->Rows[n]->Cells[5]->Value = baza[i].getCzas();
+
+				//String^ temp4 = gcnew String(baza[i].getData().c_str());
+				grid->Rows[n]->Cells[6]->Value = dts;
+
+				++n;
+			}
 		}
 	}
-	cosiedzieje.close();
 
+	if (!n)
+		++n;
+
+	grid->RowCount = n;
 
 	okno2->Controls->Add(grid);
 	okno2->Show();

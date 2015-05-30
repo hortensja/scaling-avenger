@@ -9,6 +9,17 @@
 
 using namespace std;
 
+void repl(string &dane){
+
+	size_t found = dane.find("_");
+
+	while (found != string::npos){ 
+		dane.replace(dane.begin() + found, dane.begin() + found + 1, " ");
+		found = dane.find("_", found + 1);
+	}
+};
+
+
 vector<BazaInO> wczytaj(vector<BazaInO> baza){
 
 	string nazwa;
@@ -43,6 +54,10 @@ vector<BazaInO> wczytaj(vector<BazaInO> baza){
 		dane >> poziom;
 		dane >> kolejnosc;
 		dane >> strona;
+
+		repl(nazwa);
+		repl(trasa);
+
 		BazaInO b = BazaInO(nazwa, miejsce, typ, trasa, srodek, dystans, czas, data, poziom, kolejnosc, strona);
 		baza.push_back(b);
 		what <</* baza.size() <<*/ baza.back().getNazwa() << '\t' << baza.back().getMiejsce() << "\ttyp: " << baza.back().getTyp() << "\tTrasa: " << baza.back().getTrasa() << "\tsrodek: " << baza.back().getSrodek() << "\tdyst: " << baza.back().getDystans() << "\tczas:" << baza.back().getCzas() << "\tdata:" << baza.back().getData() << "\tpoziom:" << baza.back().getPoziom() <<"\tkolej: "<< baza.back().getKolejnosc() << "\tstrona: " << baza.back().getStrona()<<endl;
