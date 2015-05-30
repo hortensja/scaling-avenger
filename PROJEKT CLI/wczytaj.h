@@ -37,9 +37,7 @@ vector<BazaInO> wczytaj(vector<BazaInO> baza){
 	int n = 0;
 
 	ifstream dane("DaneoRajdach.txt");
-	ofstream what("what.txt");
 
-	//POPRAW TO
 	while (!dane.eof())
 	{
 
@@ -60,41 +58,29 @@ vector<BazaInO> wczytaj(vector<BazaInO> baza){
 
 		BazaInO b = BazaInO(nazwa, miejsce, typ, trasa, srodek, dystans, czas, data, poziom, kolejnosc, strona);
 		baza.push_back(b);
-		what <</* baza.size() <<*/ baza.back().getNazwa() << '\t' << baza.back().getMiejsce() << "\ttyp: " << baza.back().getTyp() << "\tTrasa: " << baza.back().getTrasa() << "\tsrodek: " << baza.back().getSrodek() << "\tdyst: " << baza.back().getDystans() << "\tczas:" << baza.back().getCzas() << "\tdata:" << baza.back().getData() << "\tpoziom:" << baza.back().getPoziom() <<"\tkolej: "<< baza.back().getKolejnosc() << "\tstrona: " << baza.back().getStrona()<<endl;
-		//baza.back().wypisz(what);
-		//++n;
 	}
 	dane.close();
-	what.close();
 	return baza;
 }
 
 
 bool porownaj(const BazaInO &b, const Zapytanie &q){
 
-	ofstream porownanie("por.txt");
-
 
 	if (q.Typ != 'U' && q.Typ != b.Typ){
-		porownanie << "typ: " << q.Typ << " != " << b.Typ << endl;
 		return false;
 	}
 	if (q.Srodek != 'U' && q.Srodek != b.Srodek){
-		porownanie << "srodek: " << q.Srodek << " != " << b.Srodek << endl;
 		return false;
 	}
 	if (q.Kolejnosc != 'U' && q.Kolejnosc != b.Kolejnosc){
-		porownanie << "kolejnosc: " << q.Kolejnosc << " != " << b.Kolejnosc << endl;
 		return false;
 	}
 	if (q.Poziom != 'U' && q.Poziom != b.Poziom){
-		porownanie << "poziom: " << q.Poziom << " != " << b.Poziom << endl;
 		return false;
 	}
 	if (b.Dystans<q.DystansMin || b.Dystans>q.DystansMax){
-		porownanie << "dystans: " << q.DystansMin << " - "<<q.DystansMax<<" != " << b.Dystans << endl;
 		return false;
 	}
-	porownanie.close();
 	return true;
 }

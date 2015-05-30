@@ -1,7 +1,6 @@
 #pragma once
 
 #include "stdafx.h"
-#include "wyniki.h"
 #include "zapytanie.h"
 #include "wczytaj.h"
 

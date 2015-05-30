@@ -1,0 +1,35 @@
+Kierat	Limanowa	C	default	P	100	30	2015-05-22	S	O	http://maratonkierat.pl					
+Rajd_z_Kompasem	Choczewo	D	Smerfowa	P	10	6	2015-05-30	P	D	http://zkompasem.pl					
+Rajd_z_Kompasem	Choczewo	N	Zielona	P	21	8	2015-05-30	S	D	http://zkompasem.pl					
+Rajd_z_Kompasem	Choczewo	N	Czarna	P	21	8	2015-05-30	Z	D	http://zkompasem.pl					
+Rajd_z_Kompasem	Choczewo	N	Czerwona	P	50	16	2015-05-30	P	D	http://zkompasem.pl					
+Rajd_z_Kompasem	Choczewo	D	Kubusiowa	R	21	6	2015-05-30	P	D	http://zkompasem.pl					
+Rajd_z_Kompasem	Choczewo	D	¯ó³ta	R	42	16	2015-05-30	S	D	http://zkompasem.pl					
+Rajd_z_Kompasem	Choczewo	C	Fioletowa	R	100	16	2015-05-30	Z	D	http://zkompasem.pl					
+Jaszczur	Puszcza_Przodków	U	default	U	0	0	2015-06-05	U	U	http://jaszczur.info					
+Mazurskie_Tropy	Stawiguda	D	TR_130	R	130	12	2015-06-13	S	D	http://www.tropy.net					
+Mazurskie_Tropy	Stawiguda	D	TR_50	R	50	7	2015-06-13	S	D	http://www.tropy.net					
+Mazurskie_Tropy	Stawiguda	D	TP_50	P	50	13	2015-06-13	S	D	http://www.tropy.net					
+Mazurskie_Tropy	Stawiguda	D	TP_25	P	25	8	2015-06-13	S	D	http://www.tropy.net					
+Grassor	Lubrza	C	TR300	R	300	24	2015-06-20	Z	D	http://grassor.pl					
+Grassor	Lubrza	C	TP150	P	150	24	2015-06-20	Z	D	http://grassor.pl					
+Grassor	Lubrza	C	TR150	R	150	15	2015-06-20	Z	D	http://grassor.pl					
+Grassor	Lubrza	C	TP50	P	50	15	2015-06-20	Z	D	http://grassor.pl					
+Grassor	Lubrza	C	TE200	M	200	24	2015-06-20	Z	D	http://grassor.pl					
+Bike_Orient		U	GIGA	R	100	0	2015-06-27	S	U	http://bikeorient.pl					
+Bike_Orient		U	MEGA	R	50	0	2015-06-27	S	U	http://bikeorient.pl					
+Bike_Orient		U	PIESZA	P	40	0	2015-06-27	S	U	http://bikeorient.pl					
+Bike_Orient		U	REKREACYJNA	M	20	0	2015-06-27	S	U	http://bikeorient.pl					
+Azymut_Orient		N	P50	P	50	14	2015-07-04	S	D	http://azymut.orientujemy.pl					
+Azymut_Orient		N	P20	P	20	6	2015-07-04	S	D	http://azymut.orientujemy.pl					
+Azymut_Orient		N	R180	R	180	14	2015-07-04	S	D	http://azymut.orientujemy.pl					
+Azymut_Orient		N	R100	R	100	8	2015-07-04	S	D	http://azymut.orientujemy.pl					
+Azymut_Orient		N	R50	R	50	6	2015-07-04	S	D	http://azymut.orientujemy.pl					
+Rajd_Desperatów		C	TP_50	P	50	14	2015-07-25	S	O	http://ernobabielato.blox.pl					
+Rajd_Desperatów		C	TP_30	P	30	14	2015-07-25	P	O	http://ernobabielato.blox.pl					
+Rajd_Desperatów		D	TR	P	8	14	2015-07-25	P	O	http://ernobabielato.blox.pl					
+Izerska_Wielka_Wyrypa		D	TP3	P	25	8	2015-08-08	U	D	http://izerskawyrypa.org					
+Izerska_Wielka_Wyrypa		D	TP2	P	50	14	2015-08-08	U	D	http://izerskawyrypa.org					
+Izerska_Wielka_Wyrypa		C	TP1	P	100	27	2015-08-08	U	D	http://izerskawyrypa.org					
+Izerska_Wielka_Wyrypa		D	TR1	R	150	16	2015-08-08	U	D	http://izerskawyrypa.org					
+Izerska_Wielka_Wyrypa		D	TR2	R	70	8	2015-08-08	U	D	http://izerskawyrypa.org					

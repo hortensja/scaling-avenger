@@ -44,9 +44,6 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="wyniki.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="baza.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -69,5 +66,8 @@
     <EmbeddedResource Include="wyniki.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DaneoRajdach.txt" />
   </ItemGroup>
 </Project>
